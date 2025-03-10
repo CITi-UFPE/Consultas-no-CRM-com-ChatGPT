@@ -2,6 +2,7 @@
 \dados
 \__pycache__
 \.venv
+venv/
 Consulta_CRM_assistant.py
 dados_tratados.csv
 \venv-crm
