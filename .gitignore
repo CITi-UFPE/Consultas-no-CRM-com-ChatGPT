@@ -9,3 +9,4 @@ dados_tratados.csv
 req.txt
 gunicorn.log
 credentials.json
+secrets.toml

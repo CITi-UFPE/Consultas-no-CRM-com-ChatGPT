@@ -9,7 +9,7 @@ from utils import carregar_base
 app = Flask(__name__)
 
 # Definir limite de tokens de saída
-MAX_TOKENS_OUTPUT = 500  # Exemplo: limite de 500 tokens de resposta
+MAX_TOKENS_OUTPUT = 1000
 
 # Carregar a base de dados diretamente do sheets
 df = carregar_base()
@@ -83,7 +83,7 @@ def ask_openai():
             thread_id = thread_id,
             assistant_id = assistant_id,
             instructions='',
-            max_completion_tokens=MAX_TOKENS_OUTPUT # TEM QUE AUMENTAR A QUANTIDADE DE TOKENS, SE FOR MUITO BAIXA O GPT RETORNA UM ERRO DE RESPOSTA INCOMPLETA
+            max_completion_tokens=MAX_TOKENS_OUTPUT
         )
 
         # Define um timeout de 30 segundos e o tempo de espera entre verificações
