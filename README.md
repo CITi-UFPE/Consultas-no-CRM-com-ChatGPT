@@ -65,7 +65,7 @@ python back.py
 ```
 
 ```bash
-python -m streamlit run homepage.py
+python -m streamlit run home.py
 ```
 
 ## Implantação no Servidor
