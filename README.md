@@ -15,7 +15,7 @@ Antes de começar, certifique-se de que você tem os seguintes pré-requisitos i
    Abra o terminal e execute o seguinte comando para clonar o repositório:
 
    ```bash
-   git clone https://github.com/SamuelHVRodrigues/Consultas-no-CRM-com-ChatGPT.git
+   https://github.com/CITi-UFPE/Consultas-no-CRM-com-ChatGPT.git
    ```
 
 2. **Acesse o diretório do projeto**
