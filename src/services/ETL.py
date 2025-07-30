@@ -4,7 +4,7 @@ import requests
 import json
 from io import BytesIO
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2.service_account import Credentials
 from dotenv import load_dotenv
 import os
 import time
@@ -108,11 +108,11 @@ def get_data():
 
 def get_data_gsheet():
     credentials_str = os.getenv('GOOGLE_SHEETS_CREDENTIALS')
-    credentials = json.loads(credentials_str)
+    credentials_dict = json.loads(credentials_str)
     
-    # Acessa as variáveis de ambiente
-    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
+    # Define o escopo de acesso
+    scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
+    creds = Credentials.from_service_account_info(credentials_dict, scopes=scopes)
     client = gspread.authorize(creds)
     SheetsID = os.getenv('SHEETS_ID')
     # Abre a planilha
@@ -226,9 +226,9 @@ def UploadDataToGSheet(df):
         credentials_json = os.getenv('GOOGLE_SHEETS_CREDENTIALS')
         credentials_dict = json.loads(credentials_json)
 
-        # Acessa as variáveis de ambiente
-        scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-        creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
+        # Define o escopo de acesso
+        scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
+        creds = Credentials.from_service_account_info(credentials_dict, scopes=scopes)
         client = gspread.authorize(creds)
         
         SheetsID = os.getenv('SHEETS_ID')

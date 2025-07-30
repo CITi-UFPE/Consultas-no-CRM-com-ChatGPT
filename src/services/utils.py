@@ -3,7 +3,7 @@ import streamlit as st
 import altair as alt
 
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2.service_account import Credentials
 from gspread_dataframe import set_with_dataframe, get_as_dataframe
 
 def carregar_base():
@@ -11,9 +11,9 @@ def carregar_base():
 
     try:
         credentials = st.secrets["google_service_account"]
-        creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
+        creds = Credentials.from_service_account_info(credentials, scopes=scope)
     except:
-        creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+        creds = Credentials.from_service_account_file("credentials.json", scopes=scope)
 
     client = gspread.authorize(creds)
     

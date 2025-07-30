@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import openai
 from dotenv import load_dotenv, find_dotenv
 import time
-from data.utils import carregar_base
+from src.services import carregar_base
 
 app = Flask(__name__) # Cria uma instância do Flask
 
