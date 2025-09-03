@@ -3,7 +3,7 @@ import streamlit as st
 # Configurações globais da página, incluindo o título, ícone do CITi, layout largo e estado inicial da barra lateral
 st.set_page_config(
     page_title="CRM de Vendas",
-    page_icon="assets/Logo.svg",
+    page_icon="assets/images/Logo.svg",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -13,7 +13,22 @@ col1, col2 = st.columns([0.5,2])
 
 with col1:
     # Exibição da imagem do logo
-    st.image("assets/icon_citi.png")
+    import streamlit as st
+    from pathlib import Path
+
+    # Pega o caminho do arquivo atual (home.py)
+    script_path = Path(__file__).resolve()
+
+    # Navega "para cima" na árvore de diretórios até a pasta raiz do projeto
+    # A estrutura é: home.py -> pages -> ui -> services -> src -> RaizDoProjeto
+    project_root = script_path.parent.parent.parent.parent.parent
+
+    # Constrói o caminho completo e correto para a imagem
+    image_path = project_root / "assets" / "images" / "icon_citi.png"
+
+    # Exibe a imagem usando o caminho absoluto que acabamos de criar
+    # É importante converter o objeto 'Path' para string com str()
+    st.image(str(image_path))
 with col2:
 # Uso de HTML para estilizar o alinhamento, espaçamento e tamanho das letras e margens
     st.markdown("<h1 style='text-align: start; text-indent: 25px;'>Interface de consultas do CRM do CITi</h1>", unsafe_allow_html=True)
